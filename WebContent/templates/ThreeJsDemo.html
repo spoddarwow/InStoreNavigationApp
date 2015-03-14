@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>My first Three.js app</title>
+<style>
+body {
+	background-color: 'white';
+	margin: 0px;
+	overflow: hidden;
+}
+
+canvas {
+	width: 100%;
+	height: 100%
+}
+</style>
+</head>
+<body>
+	<button onClick="javascript: reset();">Reset</button>
+	<script src="../media/js/three.min.js"></script>
+	<script src="../media/js/TrackballControls.js"></script>
+	<script src="../media/js/main.js"></script>
+	<script>
+		window.onload = init();
+	</script>
+</body>
+</html>
