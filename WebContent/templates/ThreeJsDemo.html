@@ -17,12 +17,27 @@ canvas {
 </style>
 </head>
 <body>
-	<button onClick="javascript: reset();">Reset</button>
-	<script src="../media/js/three.min.js"></script>
-	<script src="../media/js/TrackballControls.js"></script>
-	<script src="../media/js/main.js"></script>
-	<script>
-		window.onload = init();
-	</script>
+	<script src="../media/js/lib/three.min.js"></script>
+	<script src="../media/js/lib/TrackballControls.js"></script>
+	<script src="../media/js/debug/util.js"></script>
+	<script src="../media/js/debug/store-map.js"></script>
+	<script src="../media/js/debug/Camera.js"></script>
+	<script src="../media/js/debug/map-floor.js"></script>
+	<script src="../media/js/debug/map-main.js"></script>
+	<script src="../media/js/debug/MeshLambertMaterial.js"></script>
+	<script src="../media/js/debug/MeshWrapper.js"></script>
+	<script src="../media/js/debug/Renderer.js"></script>
+	<script src="../media/js/debug/Axis.js"></script>
+	<div class="overlay-slot">
+		<div class="map-floor">
+			<a href="javascript: void(0);"> <img alt="Floor" title="Floor"
+				style="height: 35px; width: 50px;" src="../media/images/floor.png">
+				Floor
+			</a>
+
+			<div class="map-floor-dimension"></div>
+		</div>
+
+	</div>
 </body>
 </html>
