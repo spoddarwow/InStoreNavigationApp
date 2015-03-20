@@ -1,0 +1,100 @@
+@CHARSET "ISO-8859-1";
+
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.cf:before, .cf:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.cf:after {
+	clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+	*zoom: 1;
+}
+
+body {
+	background-color: 'white';
+	margin: 0px;
+	overflow: hidden;
+}
+
+canvas {
+	width: 100%;
+	height: 100%
+}
+
+.section {
+	float: left;
+}
+
+.map-floor-controller {
+	position: absolute;
+}
+
+.map-segment-text {
+	position: absolute;
+	margin-left: 10px;
+}
+
+.camera-icon {
+	height: 20px;
+	width: 25px;
+	position: absolute;
+	margin-top: -15px;
+	margin-left: 5px;
+}
+
+.camera-pos {
+	margin-left: 15px;
+}
+
+.arrow-side-up {
+	background-image: url("../../media/images/arrow_sides.png");
+	background-repeat: no-repeat;
+	height: 15px;
+	width: 15px;
+	margin-left: 9px;
+}
+
+.arrow-side-left {
+	background-image: url("../../media/images/arrow_sides.png");
+	background-repeat: no-repeat;
+	height: 15px;
+	width: 15px;
+	margin-left: -10px;
+	background-position-x: -45px;
+}
+
+.arrow-side-right {
+	background-image: url("../../media/images/arrow_sides.png");
+	background-repeat: no-repeat;
+	height: 15px;
+	width: 15px;
+	margin-left: 30px;
+	margin-top: -15px;
+	background-position-x: -15px;
+}
+
+.arrow-side-down {
+	background-image: url("../../media/images/arrow_sides.png");
+	background-repeat: no-repeat;
+	height: 15px;
+	width: 15px;
+	margin-left: 9px;
+	background-position-x: -30px;
+	margin-top: 5px;
+}

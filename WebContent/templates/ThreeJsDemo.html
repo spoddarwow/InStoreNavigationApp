@@ -3,41 +3,47 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>My first Three.js app</title>
-<style>
-body {
-	background-color: 'white';
-	margin: 0px;
-	overflow: hidden;
-}
-
-canvas {
-	width: 100%;
-	height: 100%
-}
-</style>
+<link type="text/css" href="../media/css/map.css" media="all"
+	rel="stylesheet" />
+<script type="text/javascript" src="../media/js/lib/jquery.min.js"></script>
+<script src="../media/js/lib/three.min.js"></script>
+<script src="../media/js/lib/TrackballControls.js"></script>
+<script src="../media/js/debug/util.js"></script>
+<script src="../media/js/debug/store-map.js"></script>
+<script src="../media/js/debug/Camera.js"></script>
+<script src="../media/js/debug/map-floor.js"></script>
+<script src="../media/js/debug/MeshLambertMaterial.js"></script>
+<script src="../media/js/debug/MeshWrapper.js"></script>
+<script src="../media/js/debug/Renderer.js"></script>
+<script src="../media/js/debug/Axis.js"></script>
+<script src="../media/js/debug/Light.js"></script>
+<script src="../media/js/debug/map-main.js"></script>
+<script src="../media/js/debug/jquery.map.js"></script>
 </head>
 <body>
-	<script src="../media/js/lib/three.min.js"></script>
-	<script src="../media/js/lib/TrackballControls.js"></script>
-	<script src="../media/js/debug/util.js"></script>
-	<script src="../media/js/debug/store-map.js"></script>
-	<script src="../media/js/debug/Camera.js"></script>
-	<script src="../media/js/debug/map-floor.js"></script>
-	<script src="../media/js/debug/map-main.js"></script>
-	<script src="../media/js/debug/MeshLambertMaterial.js"></script>
-	<script src="../media/js/debug/MeshWrapper.js"></script>
-	<script src="../media/js/debug/Renderer.js"></script>
-	<script src="../media/js/debug/Axis.js"></script>
+	<script type="text/javascript">
+		init();
+	</script>
 	<div class="overlay-slot">
-		<div class="map-floor">
-			<a href="javascript: void(0);"> <img alt="Floor" title="Floor"
-				style="height: 35px; width: 50px;" src="../media/images/floor.png">
-				Floor
-			</a>
+		<div class="map-floor-controller cf">
+			<div class="section floor">
+				<a href="javascript: void(0);" onclick="javascript: addFloor();">
+					<img alt="Floor" title="Floor" style="height: 35px; width: 50px;"
+					src="../media/images/floor.png"> <span
+					class="map-segment-text">Floor</span>
+				</a>
+			</div>
+			<div class="section camera-pos">
 
-			<div class="map-floor-dimension"></div>
+				<div class="arrow-side-up"></div>
+				<div class="arrow-side-left" onclick="javascript: cameraPosXNeg();"></div>
+				<div class="arrow-side-right" onclick="javascript: cameraPosXPlus();"></div>
+				<img alt="Camera" title="Camera" class="camera-icon"
+					src="../media/images/videoicon.png">
+				<div class="arrow-side-down" onclick="javascript: cameraPosYNeg();"></div>
+			</div>
 		</div>
-
 	</div>
+	<div id="map-floor-dimension"></div>
 </body>
 </html>

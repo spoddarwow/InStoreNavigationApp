@@ -4,7 +4,6 @@
 function StoreMap(object) {
 	this.mapObjects = {};
 	this.mapObjectSize = 0;
-	this.scene = new THREE.Scene();
 
 };
 
@@ -13,7 +12,6 @@ StoreMap.prototype.getMapObject = function() {
 };
 
 StoreMap.prototype.getMapObjectAsJson = function() {
-	log("Hello Object");
 	return JSON.stringify(this.mapObjects);
 };
 
