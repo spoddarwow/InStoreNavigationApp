@@ -14,6 +14,7 @@ var mouseVector;
 var controls;
 var rayCastor;
 var objects = [];
+var storeMap = new StoreMap();
 var objectOnIntersct;
 function init() {
 	scene = new THREE.Scene();
@@ -33,7 +34,7 @@ function init() {
 	camera.lookAt(scene.position);
 	document.body.appendChild(renderer.domElement);
 	document.addEventListener("keydown", onDocumentKeyDown, false);
-	window.addEventListener('mousemove', onMouseMove, false);
+	/*window.addEventListener('mousemove', onMouseMove, false);*/
 	window.addEventListener('click', onMouseClick, false);
 	render();
 }
@@ -51,6 +52,7 @@ function decorate() {
 	cube.position.x = cubeXPos;
 	cube.position.y = cubeYPos;
 	objects.push(cube);
+	this.storeMap.addObjectToMapObjects("cube", cube, cube);
 	scene.add(cube);
 	var planeGeometry = new THREE.PlaneBufferGeometry(20, 20);
 	var planeMaterial = new THREE.MeshLambertMaterial({
@@ -62,6 +64,7 @@ function decorate() {
 	plane.rotation.x = -0.5 * Math.PI;
 	plane.position.y = -2.10;
 	objects.push(plane);
+	this.storeMap.addObjectToMapObjects("Plane", plane,plane);
 	scene.add(plane);
 	var spotLight = new THREE.SpotLight(0xffffff);
 	spotLight.position.set(25, 15, 20);
@@ -127,7 +130,10 @@ function onMouseClick(e) {
 	mouseVector.x = 2 * (e.clientX / width) - 1;
 	mouseVector.y = 1 - 2 * (e.clientY / height);
 	rayCastor.setFromCamera(mouseVector, camera);
-	var intersects = rayCastor.intersectObjects(objects);
+	console.log(storeMap.getMapObject());
+	console.log(objects);
+	var intersects = rayCastor.intersectObjects(storeMap.getMapObject());
+	console.log(intersects);
 	if (intersects.length > 0) {
 		var intersect = intersects[0];
 		if (null != intersect && null != intersect.object) {

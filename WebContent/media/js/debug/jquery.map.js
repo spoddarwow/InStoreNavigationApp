@@ -2,9 +2,57 @@
  * Jquery functionality for the map
  */
 
-$('.arrow-side-up').click(function(){
-	console.log(this.cameraInstance.position.y);
-	var yPose = this.cameraInstance.position.y + 5;
-	this.camera.setYPosition(yPose);
-	console.log(this.cameraInstance.position.y);
+$(function() {
+	$('.floor').popover({
+		html : true,
+		title : function() {
+			return $('.map-hover-html .floor-popover').find('.title').html();
+		},
+		content : function() {
+			return $('.map-hover-html .floor-popover').find('.html').html();
+		},
+		container : 'body',
+		placement : 'top'
+	});
+
+	$('.camera-pos').popover({
+		html : true,
+		title : function() {
+			return $('.map-hover-html .camera-popover').find('.title').html();
+		},
+		content : function() {
+			return $('.map-hover-html .camera-popover').find('.html').html();
+		},
+		container : 'body',
+		placement : 'top'
+	});
+
+	
 })
+
+
+function cameraPosXNeg(){
+	this.camera.negateXPos();
+}
+
+function cameraPosXPos(){
+	this.camera.positedXPos();
+}
+
+
+function cameraPosYNeg(){
+	this.camera.negateYPos();
+}
+
+function cameraPosYPos(){
+	this.camera.positedYPos();
+}
+
+
+function cameraPosZNeg(){
+	this.camera.negateZPos();
+}
+
+function cameraPosZPos(){
+	this.camera.positedZPos();
+}

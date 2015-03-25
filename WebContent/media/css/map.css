@@ -32,13 +32,18 @@ body {
 	overflow: hidden;
 }
 
+.hidden {
+	display: none;
+}
+
 canvas {
-	width: 100%;
-	height: 100%
+	width: 80%;
+	height: 80%
 }
 
 .section {
 	float: left;
+	margin-left: 15px;
 }
 
 .map-floor-controller {
@@ -51,16 +56,12 @@ canvas {
 }
 
 .camera-icon {
-	height: 20px;
-	width: 25px;
-	position: absolute;
-	margin-top: -15px;
-	margin-left: 5px;
+	height: 35px;
+	width: 50px;
 }
 
-.camera-pos {
-	margin-left: 15px;
 }
+
 
 .arrow-side-up {
 	background-image: url("../../media/images/arrow_sides.png");
@@ -71,22 +72,18 @@ canvas {
 }
 
 .arrow-side-left {
-	background-image: url("../../media/images/arrow_sides.png");
+	background-image: url("../../media/images/plus_minus_icons.png");
 	background-repeat: no-repeat;
-	height: 15px;
-	width: 15px;
-	margin-left: -10px;
-	background-position-x: -45px;
+	height: 25px;
+	width: 25px;
 }
 
 .arrow-side-right {
-	background-image: url("../../media/images/arrow_sides.png");
+	background-image: url("../../media/images/plus_minus_icons.png");
 	background-repeat: no-repeat;
-	height: 15px;
-	width: 15px;
-	margin-left: 30px;
-	margin-top: -15px;
-	background-position-x: -15px;
+	height: 25px;
+	width: 25px;
+	background-position-x: -23px;
 }
 
 .arrow-side-down {

@@ -5,7 +5,12 @@
 <title>My first Three.js app</title>
 <link type="text/css" href="../media/css/map.css" media="all"
 	rel="stylesheet" />
+<link type="text/css" href="../media/css/bootstrap-theme.min.css"
+	media="all" rel="stylesheet" />
+<link type="text/css" href="../media/css/bootstrap.min.css" media="all"
+	rel="stylesheet" />
 <script type="text/javascript" src="../media/js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../media/js/lib/bootstrap.min.js"></script>
 <script src="../media/js/lib/three.min.js"></script>
 <script src="../media/js/lib/TrackballControls.js"></script>
 <script src="../media/js/debug/util.js"></script>
@@ -18,6 +23,7 @@
 <script src="../media/js/debug/Axis.js"></script>
 <script src="../media/js/debug/Light.js"></script>
 <script src="../media/js/debug/map-main.js"></script>
+<!-- <script src="../media/js/debug/main.js"></script> -->
 <script src="../media/js/debug/jquery.map.js"></script>
 </head>
 <body>
@@ -27,23 +33,83 @@
 	<div class="overlay-slot">
 		<div class="map-floor-controller cf">
 			<div class="section floor">
-				<a href="javascript: void(0);" onclick="javascript: addFloor();">
-					<img alt="Floor" title="Floor" style="height: 35px; width: 50px;"
-					src="../media/images/floor.png"> <span
-					class="map-segment-text">Floor</span>
+				<a href="javascript: void(0);"> <img alt="Floor" title="Floor"
+					style="height: 35px; width: 50px;" src="../media/images/floor.png">
+					<span class="map-segment-text">Floor</span>
 				</a>
 			</div>
 			<div class="section camera-pos">
-
-				<div class="arrow-side-up"></div>
-				<div class="arrow-side-left" onclick="javascript: cameraPosXNeg();"></div>
-				<div class="arrow-side-right" onclick="javascript: cameraPosXPlus();"></div>
-				<img alt="Camera" title="Camera" class="camera-icon"
-					src="../media/images/videoicon.png">
-				<div class="arrow-side-down" onclick="javascript: cameraPosYNeg();"></div>
+				<a href="javascript: void(0);"> <img alt="Camera" title="Camera"
+					class="camera-icon" src="../media/images/videoicon.png"><span
+					class="map-segment-text"
+					style="margin-left: -50px; margin-top: 35px;">Camera</span>
+				</a>
+			</div>
+			<div class="section rack-pos">
+				<a href="javascript: void(0);"> <img alt="Chiller" title="Chiller"
+					class="camera-icon" src="../media/images/rack.jpg"><span
+					class="map-segment-text"
+					style="margin-left: -40px; margin-top: 35px;">Rack</span>
+				</a>
+			</div>
+			<div class="section cashier-pos">
+				<a href="javascript: void(0);"> <img alt="Cashier" title="Cashier"
+					class="camera-icon" src="../media/images/cashier.jpg"><span
+					class="map-segment-text"
+					style="margin-left: -50px; margin-top: 35px;">Cashier</span>
+				</a>
+			</div>
+			<div class="section door-pos">
+				<a href="javascript: void(0);" onclick="javasrcipt: addDoor();"> <img alt="Door" title="Door"
+					class="camera-icon" src="../media/images/entrance.png"><span
+					class="map-segment-text"
+					style="margin-left: -40px; margin-top: 35px;">Door</span>
+				</a>
 			</div>
 		</div>
 	</div>
 	<div id="map-floor-dimension"></div>
+
+	<div class="map-hover-html hidden cf">
+		<div class="floor-popover .section">
+			<span class="title">Dimension for the floor</span>
+			<div class="html">
+				<div class="create-floor">
+					<input name="width" pattern="[0-9]" class="create-floor-width" placeholder="Width (X)">
+					<input name="height" class="create-floor-height" placeholder="Height (Y)">
+					<button name="floor" class="floor-create-button"
+						onclick="javascript: addFloor(this);">Create Floor</button>
+				</div>
+			</div>
+		</div>
+		<div class="camera-popover">
+			<span class="title">Camera Position</span>
+			<div class="html">
+				<div class="position-camera">
+					<div class="x-position">
+						<div class="arrow-side-left section"
+							onclick="javascript: cameraPosXNeg();"></div>
+						<label class="section"> : X Position : </label>
+						<div class="arrow-side-right section"
+							onclick="javascript: cameraPosXPos();"></div>
+					</div>
+					<div class="y-position">
+						<div class="arrow-side-left section"
+							onclick="javascript: cameraPosYNeg();"></div>
+						<label class="section"> : Y Position : </label>
+						<div class="arrow-side-right section"
+							onclick="javascript: cameraPosYPos();"></div>
+					</div>
+					<div class="z-position">
+						<div class="arrow-side-left section"
+							onclick="javascript: cameraPosZNeg();"></div>
+						<label class="section"> : Z Position : </label>
+						<div class="arrow-side-right section"
+							onclick="javascript: cameraPosZPos();"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

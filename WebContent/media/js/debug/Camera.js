@@ -20,4 +20,34 @@ var Camera = function Camera() {
 	this.setZPosition = function(z) {
 		this.cameraInstance.position.z = z;
 	}
+
+	this.negateXPos = function() {
+		var currentValue = this.cameraInstance.position.x;
+		this.setXPosition(parseInt(currentValue) - parseInt(1));
+	}
+
+	this.positedXPos = function() {
+		var currentValue = this.cameraInstance.position.x;
+		this.setXPosition(parseInt(currentValue) + parseInt(1));
+	}
+
+	this.negateYPos = function() {
+		var currentValue = this.cameraInstance.position.y;
+		this.setYPosition(parseInt(currentValue) - parseInt(1));
+	}
+
+	this.positedYPos = function() {
+		var currentValue = this.cameraInstance.position.y;
+		this.setYPosition(parseInt(currentValue) + parseInt(1));
+	}
+
+	this.negateZPos = function() {
+		var currentValue = this.cameraInstance.position.z;
+		this.setZPosition(parseInt(currentValue) - parseInt(1));
+	}
+
+	this.positedZPos = function() {
+		var currentValue = this.cameraInstance.position.z;
+		this.setZPosition(parseInt(currentValue) + parseInt(1));
+	}
 }
