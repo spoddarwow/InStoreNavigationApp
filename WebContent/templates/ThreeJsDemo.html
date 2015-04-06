@@ -38,30 +38,32 @@
 					<span class="map-segment-text">Floor</span>
 				</a>
 			</div>
-			<div class="section camera-pos">
+			<div class="section camera-pos hidden">
 				<a href="javascript: void(0);"> <img alt="Camera" title="Camera"
 					class="camera-icon" src="../media/images/videoicon.png"><span
 					class="map-segment-text"
 					style="margin-left: -50px; margin-top: 35px;">Camera</span>
 				</a>
 			</div>
-			<div class="section rack-pos">
-				<a href="javascript: void(0);"> <img alt="Chiller" title="Chiller"
-					class="camera-icon" src="../media/images/rack.jpg"><span
+			<div class="section rack-pos hidden" id="controller">
+				<a href="javascript: void(0);"> <img alt="Chiller"
+					title="Chiller" class="camera-icon" src="../media/images/rack.jpg"><span
 					class="map-segment-text"
 					style="margin-left: -40px; margin-top: 35px;">Rack</span>
 				</a>
 			</div>
-			<div class="section cashier-pos">
-				<a href="javascript: void(0);"> <img alt="Cashier" title="Cashier"
-					class="camera-icon" src="../media/images/cashier.jpg"><span
+			<div class="section cashier-pos hidden" id="controller">
+				<a href="javascript: void(0);"> <img alt="Cashier"
+					title="Cashier" class="camera-icon"
+					src="../media/images/cashier.jpg"><span
 					class="map-segment-text"
 					style="margin-left: -50px; margin-top: 35px;">Cashier</span>
 				</a>
 			</div>
-			<div class="section door-pos">
-				<a href="javascript: void(0);" onclick="javasrcipt: addDoor();"> <img alt="Door" title="Door"
-					class="camera-icon" src="../media/images/entrance.png"><span
+			<div class="section door-pos hidden" id="controller">
+				<a href="javascript: void(0);" onclick="javasrcipt: addDoor();">
+					<img alt="Door" title="Door" class="camera-icon"
+					src="../media/images/entrance.png"><span
 					class="map-segment-text"
 					style="margin-left: -40px; margin-top: 35px;">Door</span>
 				</a>
@@ -75,8 +77,9 @@
 			<span class="title">Dimension for the floor</span>
 			<div class="html">
 				<div class="create-floor">
-					<input name="width" pattern="[0-9]" class="create-floor-width" placeholder="Width (X)">
-					<input name="height" class="create-floor-height" placeholder="Height (Y)">
+					<input name="width" pattern="[0-9]" class="create-floor-width"
+						placeholder="Width (X)"> <input name="height"
+						class="create-floor-height" placeholder="Height (Y)">
 					<button name="floor" class="floor-create-button"
 						onclick="javascript: addFloor(this);">Create Floor</button>
 				</div>

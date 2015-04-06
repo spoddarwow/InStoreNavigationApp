@@ -2,13 +2,15 @@
  * Jquery functionality for the map
  */
 
-$(function() {
+$( document ).ready(function() {
+	
 	$('.floor').popover({
 		html : true,
 		title : function() {
 			return $('.map-hover-html .floor-popover').find('.title').html();
 		},
 		content : function() {
+			controls.enabled = false;
 			return $('.map-hover-html .floor-popover').find('.html').html();
 		},
 		container : 'body',
