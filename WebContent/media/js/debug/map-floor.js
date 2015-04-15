@@ -18,7 +18,7 @@ function Floor(object) {
 		var floor = new Floor();
 		floor.floorWidth = width;
 		floor.floorHeight = height;
-		floor.floorGeometry = new THREE.PlaneBufferGeometry(width, height);
+		floor.floorGeometry = new THREE.BoxGeometry(width, height, 0.75);
 		return floor;
 	}
 	

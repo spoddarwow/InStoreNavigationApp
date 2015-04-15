@@ -25,9 +25,9 @@ var init = function() {
 	this.renderer.setUp();
 	this.camera.setUp(width, height);
 	document.body.appendChild(renderer.renderer.domElement);
-	this.camera.setXPosition(10);
-	this.camera.setYPosition(6);
-	this.camera.setZPosition(3);
+	// this.camera.setXPosition(50);
+	this.camera.setYPosition(500);
+	this.camera.setZPosition(1000);
 	this.camera.cameraInstance.lookAt(this.scene.position);
 	controls = new THREE.TrackballControls(this.camera.cameraInstance);
 	controls.rotateSpeed = 1.0;
@@ -37,7 +37,6 @@ var init = function() {
 	controls.noPan = false;
 	controls.staticMoving = true;
 	controls.dynamicDampingFactor = 0.3;
-	addBasicInvisiblePlane();
 	renderer.setColor(0xf0f0f0);
 	renderer.renderer.domElement.addEventListener("keydown", onDocumentKeyDown,
 			false);
@@ -57,14 +56,7 @@ var render = function() {
 	requestAnimationFrame(render);
 }
 
-var addBasicInvisiblePlane = function(width, height) {
-	/*basicPlane = new THREE.Mesh(
-			new THREE.PlaneBufferGeometry(width * 3, height),
-			new THREE.MeshBasicMaterial({
-				color : 0x000000,
-				opacity : 0.25,
-				transparent : true
-			}));*/
+var addBasicInvisiblePlane = function(width, height, floorWrapper) {
 	var cubeGeometry = new THREE.BoxGeometry(width, height, 4);
 	var cubeMaterial = new THREE.MeshLambertMaterial({
 		color : 0x000000,
@@ -73,13 +65,12 @@ var addBasicInvisiblePlane = function(width, height) {
 		side : THREE.BackSide
 	});
 	basicPlane = new THREE.Mesh(cubeGeometry, cubeMaterial);
-	basicPlane.position.x = -8;
-	basicPlane.position.y = -3.80;
-	basicPlane.rotation.x = -0.5 * Math.PI;
-
-	// basicPlane.rotation.x = 250;
-	// basicPlane.rotation.y = 1;
-	// basicPlane.visible = false;
+	basicPlane.name = "invisble-plane";
+	basicPlane.visible = false;
+	basicPlane.position.x = floorWrapper.position.x;
+	basicPlane.position.y = floorWrapper.position.y;// + 1.205 * Math.PI
+	basicPlane.rotation.x = floorWrapper.rotation.x;
+	scene.remove(scene.getObjectByName('invisble-plane'));
 	this.scene.add(basicPlane);
 }
 
@@ -100,8 +91,8 @@ var addFloor = function(thisObject) {
 			.createMeshLambertMaterial(' 0xcccccc');
 	var wrapper = new MeshWrapper().wrapWithMesh(floor.floorGeometry, marshel,
 			"floor-mesh");
-	wrapper.position.x = -8;
-	wrapper.position.y = -5.10;
+	wrapper.position.x = -30;
+	wrapper.position.y = -18.10;
 	wrapper.rotation.x = -0.5 * Math.PI;
 	floorObject = wrapper;
 	this.storeMap.addObjectToMapObjects("floor", floor, wrapper);
@@ -118,23 +109,50 @@ var addFloor = function(thisObject) {
 	$('.floor').popover('hide');
 	$('.floor-create-button').html('Update Floor Dimension');
 	controls.enabled = true;
-	addBasicInvisiblePlane(width, height);
+	addBasicInvisiblePlane(width, height, wrapper);
 	$("div[id^='controller']").removeClass('hidden');
+}
+
+var addCasier = function() {
+	var planeGeometry = new THREE.BoxGeometry(
+			floorObject.geometry.parameters.width / (2 * Math.PI),
+			floorObject.geometry.parameters.height / (2 * Math.PI), 0.01);
+	var planeMaterial = new THREE.MeshLambertMaterial({
+		color : 0xcccccc,
+		map : THREE.ImageUtils.loadTexture('../media/images/cashier.jpg')
+	});
+	plane = new THREE.Mesh(planeGeometry, planeMaterial);
+	// plane.name = "Door";
+	plane.receiveShadow = true;
+
+	plane.position.y = 100;
+	// plane.rotation.x = 6;
+	// plane.rotation.z = -0.08 * Math.PI;
+	this.storeMap.addObjectToMapObjects("Door", plane, plane);
+	this.scene.add(plane);
+	var spotLight = new THREE.SpotLight(0xffffff);
+	spotLight.position.set(15, 10, 20);
+	spotLight.castShadow = true;
+	this.scene.add(spotLight);
 }
 
 var addDoor = function(thisObject) {
 	THREE.ImageUtils.crossOrigin = 'anonymous';
-	var planeGeometry = new THREE.PlaneBufferGeometry(2.5, 2);
+	var planeGeometry = new THREE.BoxGeometry(
+			floorObject.geometry.parameters.width / (2 * Math.PI),
+			floorObject.geometry.parameters.height / (2 * Math.PI), 100);
 	var planeMaterial = new THREE.MeshLambertMaterial({
 		color : 0xcccccc,
 		map : THREE.ImageUtils.loadTexture('../media/images/door.png')
 	});
 	plane = new THREE.Mesh(planeGeometry, planeMaterial);
-	this.storeMap.addObjectToMapObjects("Door", plane, plane);
+	// plane.name = "Door";
 	plane.receiveShadow = true;
-	plane.position.y = floorObject.position.y + 0.5;
-	plane.rotation.x = 6;
-	plane.rotation.z = -0.05 * Math.PI;
+
+	plane.position.y = 100;
+	// plane.rotation.x = 6;
+	// plane.rotation.z = -0.08 * Math.PI;
+	this.storeMap.addObjectToMapObjects("Door", plane, plane);
 	this.scene.add(plane);
 	var spotLight = new THREE.SpotLight(0xffffff);
 	spotLight.position.set(15, 10, 20);
@@ -160,7 +178,6 @@ function onMouseDown(e) {
 	rayCastor.setFromCamera(mouseVector, camera.cameraInstance);
 	var intersects = rayCastor.intersectObjects(storeMap.getMapObject());
 	if ((intersects.length > 0) && (intersects[0].object.name != "floor-mesh")) {
-		log(intersects[0].object.name);
 		controls.enabled = false;
 		objectOnIntersct = intersects[0];
 		isMouseClicked = true;

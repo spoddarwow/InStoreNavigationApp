@@ -5,8 +5,8 @@ var Camera = function Camera() {
 	this.cameraInstance;
 
 	this.setUp = function(screenWidth, screenHeight) {
-		this.cameraInstance = new THREE.PerspectiveCamera(45, screenWidth
-				/ screenHeight, 0.1, 1000);
+		this.cameraInstance = new THREE.PerspectiveCamera(70, screenWidth
+				/ screenHeight, 1, 10000);
 	}
 
 	this.setXPosition = function(x) {
